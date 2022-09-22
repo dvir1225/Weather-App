@@ -13,6 +13,7 @@ selectors.submit.addEventListener('click', ()=>{
     getWeatherData(place)
 })
 
+//fetch current weather only
 async function getWeatherData(place){
     try {
         const getWeatherData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&APPID=c20e51e1cd4bf0147fee570dd34d8dd1&units=metric&exclude=minutely,hourly,daily,alerts`)
