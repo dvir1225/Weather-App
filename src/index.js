@@ -1,6 +1,20 @@
-async function getWeatherData (){
+import appendText from "./appendText";
+const selectors = {
+    submit: document.getElementById('formSubmit'),
+    formInput: document.getElementById('formInput'),
+    placeName: document.querySelector('.placeName'),
+    currentTemp: document.querySelector('.currentTemp'),
+    feelsLike: document.querySelector('.feelsLike')
+}
+
+
+selectors.submit.addEventListener('click', ()=>{
+    const place = selectors.formInput.value;
+    getWeatherData(place)
+})
+
+async function getWeatherData(place){
     try {
-        const place = prompt('Where would you like to get the weather at?')
         const getWeatherData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&APPID=c20e51e1cd4bf0147fee570dd34d8dd1&units=metric&exclude=minutely,hourly,daily,alerts`)
         const parsedData = await getWeatherData.json()
         let weather = {
@@ -12,25 +26,11 @@ async function getWeatherData (){
             weatherMain: parsedData.weather[0].main,
             weatherDescription: parsedData.weather[0].description
         };
-        appendText(weather)
+        appendText(weather);
+        console.log('success')
     }
 
     catch {
-        alert("Ooops... there's an error");
+        console.log("Ooops... there's an error");
     }
 }
-
-function appendText(weather){
-    selectors.placeName.innerText = weather.name;
-    selectors.currentTemp.innerText = weather.current;
-    selectors.feelsLike.innerText = weather.feelsLike;
-}
-
-getWeatherData()
-
-const selectors = {
-    placeName: document.querySelector('.placeName'),
-    currentTemp: document.querySelector('.currentTemp'),
-    feelsLike: document.querySelector('.feelsLike')
-}
-
