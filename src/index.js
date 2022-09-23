@@ -19,7 +19,6 @@ async function getCurrentWeather(place){
     try {
         const getWeatherData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&APPID=c20e51e1cd4bf0147fee570dd34d8dd1&units=metric&exclude=minutely,hourly,daily,alerts`)
         const parsedData = await getWeatherData.json()
-        console.log(parsedData);
         let weather = {
             name: parsedData.name,
             current: Math.floor(parsedData.main.temp),
@@ -30,11 +29,10 @@ async function getCurrentWeather(place){
             weatherDescription: parsedData.weather[0].description,
             humidity: parsedData.main.humidity,
             lat: parsedData.coord.lat,
-            lon: parsedData.coord.lon
+            lon: parsedData.coord.lon,
         };
-        getTime(weather.lat, weather.lon);
-        appendText(weather);
-        console.log('success')
+        appendText(weather, weather.lat, weather.lon);
+        console.log('success');
     }
 
     catch {

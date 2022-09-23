@@ -3,8 +3,8 @@ async function getTime(lat, lon) {
     {method: 'GET',
     headers: {'X-Api-Key': 'pKp6JFlMuCitmLa9gZXMKg==MzHw02r32xKXdEyO'},
     contentType: 'application/json',
-    success: function(result){
-        console.log(result)
+    success: function(){
+        console.log('success')
     },
     error: function ajaxError(jqXHR) {
         console.error('Error: ', jqXHR.responseText);
@@ -20,7 +20,7 @@ async function getTime(lat, lon) {
         second: timeData.second,
         dayOfWeek: timeData.day_of_week
     }
-    document.querySelector('.timeDate').innerText = (`${time.dayOfWeek}, ${time.day}.${time.month}.${time.year}, ${time.hour}:${time.minute}:${time.second}`)
+    return time;
 }
 
 export default getTime
