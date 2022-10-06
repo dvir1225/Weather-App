@@ -1,9 +1,12 @@
-import appendText from "./appendText";
-import getTime from "./getTime";
+import displayCurrentWeather from "./displayCurrentWeather";
+import displayForecast from "./displayForecast";
+import getForecastData from "./getForecastData";
 import getWeatherData from "./getWeatherData";
+import "./styles.css"
 
 const selectors = {
-    submit: document.getElementById('formSubmit'),
+    weather: document.getElementById('formSubmit'),
+    forecast: document.getElementById('getForecast'),
     formInput: document.getElementById('formInput'),
     placeName: document.querySelector('.placeName'),
     currentTemp: document.querySelector('.currentTemp'),
@@ -11,22 +14,40 @@ const selectors = {
 }
 
 let intervalNum = 0
-selectors.submit.addEventListener('click', ()=>{
+selectors.weather.addEventListener('click', ()=>{
     const place = selectors.formInput.value;
-    clearInterval(intervalNum)
+    clearInterval(intervalNum);
     intervalNum+=1;
-    getCurrentWeather(place)
+    getCurrentWeather(place);
+})
+
+selectors.forecast.addEventListener('click', ()=>{
+    const place = selectors.formInput.value;
+    clearInterval(intervalNum);
+    intervalNum+=1;
+    getForecast(place)
 })
 
 //fetch current weather only
 async function getCurrentWeather(place){
     try {
         const weather = await getWeatherData(place);
-        appendText(weather)
-        console.log('success');
+        displayCurrentWeather(weather)
+        console.log('Got weather');
     }
 
     catch {
-        console.log("Ooops... there's an error");
+        console.log("Ooops... Couldn't get weather");
+    }
+}
+
+async function getForecast(place){
+    try {
+        const forecastList = await getForecastData(place);
+        displayForecast(forecastList);
+        console.log('Got forecast');
+    }
+    catch {
+        console.log("Ooops... Couldn't get forecast")
     }
 }
