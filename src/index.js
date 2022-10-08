@@ -6,6 +6,7 @@ import "./styles.css"
 
 const selectors = {
     welcomePage: document.querySelector('.welcomePage'),
+    weatherDiv: document.querySelector('.weatherDiv'),
     currentWeatherCard: document.querySelector('.currentWeatherCard'),
     weather: document.getElementById('formSubmit'),
     forecast: document.getElementById('getForecast'),
@@ -15,6 +16,10 @@ const selectors = {
     currentTemp: document.querySelector('.currentTemp'),
     feelsLike: document.querySelector('.feelsLike'),
     greeting: document.querySelector('.greeting')
+}
+
+function scrollUp() {
+    document.documentElement.scrollTop = 0;
 }
 
 let intervalNum = 0
@@ -27,10 +32,12 @@ selectors.weather.addEventListener('click', ()=>{
     if(!selectors.searchbar.classList.contains('header')){
         selectors.searchbar.classList.add('header');
     }
+    selectors.weatherDiv.classList.remove('hide');
     getCurrentWeather(place);
     getForecast(place);
+    scrollUp()
 })
-
+document.querySelector('.scrollUp').addEventListener('click', scrollUp);
 
 //fetch current weather only
 async function getCurrentWeather(place){
@@ -59,12 +66,12 @@ const hours = new Date().getHours();
 
 (function setBackgroundColor(){
     if (hours >=4 && hours <=22){
-    selectors.welcomePage.style.backgroundColor = '#60B4E2';
-    selectors.currentWeatherCard.style.backgroundColor = '#60B4E2';
+    selectors.welcomePage.style.background = 'linear-gradient(315deg, rgba(96,180,226,1) 0%, rgba(0,96,193,1) 100%)';
+    selectors.currentWeatherCard.style.background = 'linear-gradient(315deg, rgba(96,180,226,1) 0%, rgba(0,96,193,1) 100%)';
 
     } else {
-        selectors.welcomePage.style.backgroundColor = '#185E89';
-        selectors.currentWeatherCard.style.backgroundColor = '#185E89';
+        selectors.welcomePage.style.background = 'linear-gradient(315deg, rgba(30,94,134,1) 0%, rgba(1,55,88,1) 75%)';
+        selectors.currentWeatherCard.style.background = 'linear-gradient(315deg, rgba(30,94,134,1) 0%, rgba(1,55,88,1) 75%)';
     }
 })()
 
