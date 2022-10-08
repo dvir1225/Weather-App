@@ -2,7 +2,7 @@ import getTime from "./getTime";
 import getIcon from "./getIcon";
 
 const displayCurrentWeather = (weather) => {
-    const weatherDiv = document.querySelector('.weatherDiv');
+    const currentWeatherCard = document.querySelector('.currentWeatherCard');
     const visibility = weather.visibility;
     const getVisibility = () => {
         let result;
@@ -29,8 +29,8 @@ const displayCurrentWeather = (weather) => {
         }
         return result;
     }
-
-    weatherDiv.innerHTML = `
+    document.querySelector('.currentPlace').innerHTML = `<span>${weather.name}, ${weather.country}</span>`
+    currentWeatherCard.innerHTML = `
     <div class="placeName">${weather.name}, ${weather.country}</div>
     <div class="timeDate">${getTime(weather)}</div>
     <div class="currentTemp">Current temp is ${weather.current}°C</div>

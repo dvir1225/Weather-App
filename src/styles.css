@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 :root {
     box-sizing: border-box;
 }
@@ -10,61 +9,88 @@ html, body {
 }
 
 * {
-    font-family: roboto, sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
     width: 100%;
-    background-color: lightgray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
 }
 
-.content {
+header {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 300px;
+    background-color: #4F4F4F;
+    color: white;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+}
+
+.currentPlace {
+    margin-left: 20px;
+    font-size: 75%;
+}
+
+.welcomePage {
+    display: flex;
+    height: 50%;
+    width: 50%;
+    margin: 100px auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 100px;
+    border-radius: 25px;
+    color: white;
 }
 
-/* 
-.searchbar {
-    width: 400px;
-    position: relative;
-}
-
-.autocomplete-input {
-    padding: 25px 15px;
-    width: 100%;
+.searchbar input {
+    padding: 10px 20px;
     border-radius: 5px;
-    color: #48438F;
-    font-weight: bold;
-    height: 50px;
-    outline: none;
     border: none;
+    box-shadow: 1px 1px 3px black;
+    margin-right: 10px;
 }
 
-.autocomplete-input::placeholder {
-    font-weight: bold;
+.getWeather {
+    background: linear-gradient(190deg, rgba(3,107,210,1) 0%, rgba(2,63,124,1) 100%);
+    font-weight: 600;
+    color: white;
 }
 
-.autocomplete-list {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid black;
+.getWeather:hover {
+    background: linear-gradient(190deg, rgba(3,107,210,0.8) 0%, rgba(2,63,124,0.8) 100%);
 }
 
-.autocomplete-list li {
-    color: blue;
-    padding: 15px;
-    width: calc(100% - 30px);
-    cursor: pointer;
-} */
+.getWeather:active {
+    background: linear-gradient(190deg, rgba(3,107,210,0.6) 0%, rgba(2,63,124,0.6) 100%);
+
+}
+.hide {
+    display: none;
+}
+
+.greeting {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 75px;
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.greeting > :nth-child(2) {
+    margin-top: 20px;
+    font-size: 75%;
+    font-weight: 400;
+}

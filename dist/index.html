@@ -10,21 +10,28 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="content">
+    <header>
+        <div class="header-left">
+        <img class="headerLogo" src="../src/images/clear.png" alt="">
+        <span class="headerTitle">GetYourWeather</span>
+        <div class="currentPlace"></div>
+        </div>
+    </header>
+    <div class="welcomePage">
         <h1 class="greeting"></h1>
         <div class="searchbar">
             <form class="placeInput" onsubmit="return false">
                 <input class="autocomplete-input"
                 type="text"
                 id="formInput"
-                placeholder="Get weather at...">
-                <!-- <ul class="autocomplete-list" id="places-list">
-                </ul> -->
+                placeholder="Search city">
                 <input class="getWeather" type="submit" id="formSubmit" value="Get Weather">
-                <input class="getForecast" type="submit" id="getForecast" value="Get Forecast">
             </form>
         </div>
-        <div class="weatherDiv"></div>
+    </div>
+    <div class="weatherDiv">
+        <div class="currentWeatherCard"></div>
+        <div class="forecastCards"></div>
     </div>
 </body>
 </html>
