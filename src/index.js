@@ -10,7 +10,8 @@ const selectors = {
     formInput: document.getElementById('formInput'),
     placeName: document.querySelector('.placeName'),
     currentTemp: document.querySelector('.currentTemp'),
-    feelsLike: document.querySelector('.feelsLike')
+    feelsLike: document.querySelector('.feelsLike'),
+    greeting: document.querySelector('.greeting')
 }
 
 let intervalNum = 0
@@ -51,3 +52,19 @@ async function getForecast(place){
         console.log("Ooops... Couldn't get forecast")
     }
 }
+
+const setGreeting = () => {
+    let greeting;
+    const hours = new Date().getHours();
+    if (hours >= 4 && hours < 12 ){
+        greeting = 'Good Morning'
+    } else if (hours >= 12 && hours < 18){
+        greeting = 'Good Afternoon'
+    } else if (hours >=18 && hours < 22){
+        greeting = 'Good Evening'
+    } else {
+        greeting = 'Good Night'
+    } return greeting;
+}
+
+selectors.greeting.innerHTML = setGreeting();

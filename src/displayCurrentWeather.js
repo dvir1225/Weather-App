@@ -1,4 +1,5 @@
 import getTime from "./getTime";
+import getIcon from "./getIcon";
 
 const displayCurrentWeather = (weather) => {
     const weatherDiv = document.querySelector('.weatherDiv');
@@ -34,7 +35,8 @@ const displayCurrentWeather = (weather) => {
     <div class="timeDate">${getTime(weather)}</div>
     <div class="currentTemp">Current temp is ${weather.current}°C</div>
     <div class="feelsLike">Feels like ${weather.feelsLike} °C</div>
-    <div class="visibility">${getVisibility()}</div>`;
+    <div class="visibility">${getVisibility()}</div>
+    <div class="icon"><img class="weatherIcon" src=${getIcon(weather.icon)} alt=""></div>`;
 
     setInterval(function (){document.querySelector('.timeDate').innerText = getTime(weather)}, 1000);
 }   
